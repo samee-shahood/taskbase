@@ -118,7 +118,8 @@ app.get('/weather', (req, res) => {
                 weatherStatus: body.weather_des,
 				temp: body.temp,
                 address: req.query.address,
-				location
+				location,
+				icon: body.icon
             })
         })
     })

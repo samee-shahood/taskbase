@@ -8,6 +8,8 @@ import { Card, ListGroup, Col, Row } from 'react-bootstrap';
 
 import DatePicker from "react-datepicker";
 
+import Weather from './weather.component';
+
 import "react-datepicker/dist/react-datepicker.css";
 
 import Axios from 'axios';
@@ -77,7 +79,7 @@ const Dashboard =() =>{
 					</div>
 
 					<div class="four">
-						Four
+						<Weather/>
 					</div>
 
 					<div class="five">
