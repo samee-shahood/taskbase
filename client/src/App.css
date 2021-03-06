@@ -1,9 +1,10 @@
 @import url('https://fonts.googleapis.com/css2?family=Karla:wght@500&display=swap');
+@import 'bootstrap/dist/css/bootstrap.min.css';
 
 .App {
-  text-align: center;
+  /* text-align: center; */
   font-family: 'Karla', sans-serif;
-  background-color: white;
+  background-color: rgb(242, 244, 248);
 }
 
 .App-link {
