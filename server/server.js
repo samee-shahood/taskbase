@@ -10,6 +10,10 @@ const LocalStrategy = require("passport-local");
 const passportJWT = require("passport-jwt");
 const JWTStrategy = passportJWT.Strategy;
 
+// Weather app requires
+const geocode = require('./routes/geocode.js');
+const forecast = require('./routes/forecast.js');
+
 require('dotenv').config();
 
 const app = express();
@@ -91,6 +95,34 @@ passport.use(new JWTStrategy({
 ))
 
 app.use(express.static(path.join(__dirname, "../client", "build")));
+
+app.get('/weather', (req, res) => {
+    if(!req.query.address) {
+        return res.send({
+            error: 'You must provide an address.'
+        })
+    }
+
+    geocode(req.query.address, (error, {latitude, longitude, location} = {}) => {
+        if(error) {
+            return res.send({error});
+        }
+
+        forecast(latitude, longitude, (error, body) => {
+            if(error) {
+                return res.send({error});
+            }
+            
+            res.send({
+                // forecast: forecastData,
+                weatherStatus: body.weather_des,
+				temp: body.temp,
+                address: req.query.address,
+				location
+            })
+        })
+    })
+})
 
 // Routes
 // app.use('/api', require('./routes/auth.js'));
