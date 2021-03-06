@@ -48,7 +48,7 @@ export default class Dashboard extends Component{
 						<div class="five">
 							Five
 						</div>
-						
+
 						<div class="six">
 							Six
 						</div>
