@@ -11,6 +11,7 @@ app.post("/users/register", async (req, res) => {
 		const newUser = new User({
 			username : req.body.username,
 			email: req.body.email,
+			location: req.body.location,
 			password: hash,
 		});
 
@@ -28,7 +29,7 @@ app.post("/users/register", async (req, res) => {
 
 });
 
-app.post("/login", (req, res, next) => {
+app.post("/users/login", (req, res, next) => {
 	passport.authenticate("local", (err, user) => {
 		if(err){
 			return next(err)
@@ -45,7 +46,7 @@ app.post("/login", (req, res, next) => {
 	})(req, res, next)
 })
   
-app.get("/secret", passport.authenticate("jwt", { session: false }), (req, res) => {
+app.get("/users/secret", passport.authenticate("jwt", { session: false }), (req, res) => {
 if(!req.user){
 	res.json({
 	username: "nobody"
@@ -55,7 +56,7 @@ if(!req.user){
 }
 })
 
-app.get('/logout', function(req, res){
+app.get('/users/logout', function(req, res){
 	req.logout();
 	return res.json({success: "true"});
 });

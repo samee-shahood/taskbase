@@ -36,59 +36,59 @@ mongoose.connect(
 
 let User = require('./models/user.model');
 
-// app.use(passport.initialize())
+app.use(passport.initialize())
 	
-// passport.use(new LocalStrategy({
-// 	usernameField: "email"
-// }, 
-// 	async (email, password, cb) => {
-// 		try {
-// 			const user = await User.findOne({
-// 				$or: [{ email }],
-// 			});
+passport.use(new LocalStrategy({
+	usernameField: "email"
+}, 
+	async (email, password, cb) => {
+		try {
+			const user = await User.findOne({
+				$or: [{ email }],
+			});
 				
-// 			if (!user || !user.password) {
-// 				console.log("Incorrect password");
-// 				return cb(null, false, { message: 'Incorrect email or password.' });
-// 			}
+			if (!user || !user.password) {
+				console.log("Incorrect password");
+				return cb(null, false, { message: 'Incorrect email or password.' });
+			}
 		
-// 			bcrypt.compare(password, user.password, (err, result) => {
-// 				if(!result){
-// 					console.log("Incorrect password");
-// 					return cb(null, false, { message: 'Incorrect email or password.' });
-// 				}
-// 				console.log("Logged in");
-// 				return cb(null, user, { message: 'Logged In Successfully' });
-// 			});
-// 		} catch (err) {
-// 			return cb(null, false, {statusCode: 400, message: err.message});
-// 		}
-// 	}
-// ))
+			bcrypt.compare(password, user.password, (err, result) => {
+				if(!result){
+					console.log("Incorrect password");
+					return cb(null, false, { message: 'Incorrect email or password.' });
+				}
+				console.log("Logged in");
+				return cb(null, user, { message: 'Logged In Successfully' });
+			});
+		} catch (err) {
+			return cb(null, false, {statusCode: 400, message: err.message});
+		}
+	}
+))
 
-// passport.use(new JWTStrategy({
-// 	jwtFromRequest: passportJWT.ExtractJwt.fromAuthHeaderAsBearerToken(),
-// 	secretOrKey: "jwt_secret"
-// 	}, 
-// 	async (jwt_payload, done) => {
+passport.use(new JWTStrategy({
+	jwtFromRequest: passportJWT.ExtractJwt.fromAuthHeaderAsBearerToken(),
+	secretOrKey: "jwt_secret"
+	}, 
+	async (jwt_payload, done) => {
 
-// 		const user = await User.findById(jwt_payload.user._id);
+		const user = await User.findById(jwt_payload.user._id);
 
-// 		if (!user || !user.password) {
-// 			return done(null, false, {
-// 				message: "Token not matched"
-// 			})
-// 		}
+		if (!user || !user.password) {
+			return done(null, false, {
+				message: "Token not matched"
+			})
+		}
 
-// 		if(user.id === jwt_payload.user._id){
-// 			return done(null, user)
-// 		} else {
-// 			return done(null, false, {
-// 				message: "Token not matched"
-// 			})
-// 		}
-// 	}
-// ))
+		if(user.id === jwt_payload.user._id){
+			return done(null, user)
+		} else {
+			return done(null, false, {
+				message: "Token not matched"
+			})
+		}
+	}
+))
 
 app.use(express.static(path.join(__dirname, "../client", "build")));
 
