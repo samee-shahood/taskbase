@@ -4,3 +4,4 @@ node_modules/
 client/.eslintcache
 server/.eslintcache
 venv/
+server/config
