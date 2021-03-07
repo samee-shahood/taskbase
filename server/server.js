@@ -128,6 +128,8 @@ app.get('/weather', (req, res) => {
 // Routes
 // app.use('/api', require('./routes/auth.js'));
 app.use('/api', require('./routes/user.js'));
+app.use('/api', require('./routes/form.js'));
+
 
 app.listen(5000, err => {
     if (err) return console.log(err)

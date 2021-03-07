@@ -13,6 +13,8 @@ import "react-datepicker/dist/react-datepicker.css";
 
 import axios from 'axios';
 
+import Form from "./form";
+
 const Dashboard =() =>{
 
 	const [startDate, setStartDate] = useState(new Date());
@@ -134,8 +136,13 @@ const Dashboard =() =>{
 					</div>
 
 					<div class="two">
-						<input size= "47.5"/>
-					</div>
+                        <Card.Header id="notepadHeader" as="h5">
+                            <div className="text-center">
+                                Your Notepad
+                            </div>
+                        </Card.Header>
+                        <textarea name="notepad" cols="43" rows="27" placeholder="Use this space for whatever you need..."></textarea>
+                    </div>
 
 					<div class="three">
 						<Card.Header as="h5">
@@ -161,7 +168,10 @@ const Dashboard =() =>{
 										</Row>									
 									</label>
 								</Col>
-								<Col></Col>
+								<Row>
+									<Col><Form/></Col>				
+								
+							</Row>
 								</Row>
 							</div>
 					
@@ -194,7 +204,8 @@ const Dashboard =() =>{
 
 					</div>
 
-					<div class="four">
+					<div class="four" style={{ 
+				backgroundImage: `url("https://fasken.azureedge.net/-/media/29b8b6a371344d40a392350b395691d6.ashx?mw=2560&modified=20200624134121&hash=69328985F09305B8D5FFD44766B77D53")`}}>
 						<Weather/>
 					</div>
 
@@ -250,6 +261,7 @@ const Dashboard =() =>{
 						</Card>
 					</div>
 				</div>
+
 
 			</div>
 	)

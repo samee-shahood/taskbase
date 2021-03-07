@@ -171,3 +171,12 @@ h4{
 #activity{
 	font-size: 20px;
 }
+
+textarea {
+    /* background: #faf6bd center center no-repeat; */
+    border: 1px solid #888; 
+  }
+
+/* #notepadHeader{
+    background-color: #f9f3a1;
+} */

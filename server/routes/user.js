@@ -86,7 +86,7 @@ app.get(
 			})
 		}
 
-		let queryDate = new Date(req.query.date);
+		let queryDate = new Date(req.query.date.replace(/-/g, '\/').replace(/T.+/, ''));
 		// let user = [{
 		// 		date: new Date("2021-03-08T00:26:14.078Z"),
 		// 		description: "Integrate API",
