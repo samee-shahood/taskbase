@@ -18,17 +18,22 @@ const Dashboard =() =>{
 
 	const [startDate, setStartDate] = useState(new Date());
 
-	let tasks = [{
-		date: "03/06/2021",
-		title: "Integrate API",
-		description: "i need to unhard code this"	
-	},
+	const[tasks, setTasks] = useState({tasks});
 
-	{
-		date: "03/07/2021",
-		title: "Submit",
-		description: "need to submit this!"	
-	}];
+
+	useEffect(() => {
+		const fetchData = async () => {
+		  const result = await axios(
+			'https://hn.algolia.com/api/v1/search?query=redux',
+		  );
+	 
+		  setData(result.data);
+		};
+	 
+		fetchData();
+	  }, []);
+
+
 
 	return(
 			<div>
@@ -43,11 +48,31 @@ const Dashboard =() =>{
 
 					<div class="three">
 						<Card.Header as="h5">
-							Your Task List
-							<label>
-								<DatePicker selected={startDate} onChange={date => setStartDate(date)} />
-								<CalendarEvent  size={35} />
-							</label>
+							<div className="text-center">
+								Your Task List
+							</div>
+
+							<br />
+
+							<div className="center">
+								<Row>
+								<Col></Col>
+								<Col xs={10}>
+									<label >
+										<Row>
+											<Col md={5}>
+											<DatePicker class="react-datepicker" selected={startDate} onChange={date => setStartDate(date)} />
+											</Col>
+											<Col xs={3}></Col>
+											<Col>
+												<CalendarEvent  size={25} />									
+											</Col>
+										</Row>									
+									</label>
+								</Col>
+								<Col></Col>
+								</Row>
+							</div>
 					
 						</Card.Header>
 						<ListGroup variant="flush">
