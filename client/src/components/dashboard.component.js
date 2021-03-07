@@ -225,9 +225,10 @@ const Dashboard =() =>{
 
 					<div class="six">
 						<Card>
+						<Card.Img id="musicImg" variant="top" src = {profileimage}/>
 							<Card.Body>
 							<Card.Title>Music to listen to:</Card.Title>
-							<Card.Img variant="top" src = {profileimage}/>
+							
 								<blockquote id="activity" className="blockquote mb-0">
 								{/* <p>
 									{' '}
