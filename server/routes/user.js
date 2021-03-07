@@ -96,9 +96,6 @@ app.get(
 		let days = []
 
 		for(var i in user.tasks){
-			// console.log(user[i].date.getDate());
-			console.log(queryDate.getDate());
-
 			if((user.tasks[i].date.getMonth() ==  queryDate.getMonth()) && (user.tasks[i].date.getFullYear() ==  queryDate.getFullYear()) && (user.tasks[i].date.getDate() ==  queryDate.getDate()) ){
 				days.push(user.tasks[i]);
 			}
