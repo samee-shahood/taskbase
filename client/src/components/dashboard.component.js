@@ -20,6 +20,9 @@ const Dashboard =() =>{
 
 	const[tasks, setTasks] = useState([]);
 
+	const [activityRec, setActivity] = useState();
+	const [songRec, setMusic] = useState();
+
 	const fetchData = async () => {
 		const result = await axios.get(
 			'http://localhost:5000/api/tasks?date=' + startDate.toISOString(),
@@ -43,15 +46,33 @@ const Dashboard =() =>{
 	};
 
 	const changeDate = async (date) => {
-		console.log(date);
 		setStartDate(date);
 		fetchData2(date);
+	}
+
+	function activityGenerator() {
+		let activities = ["Can you fit a 30 minute walk into your schedule?", "Today is the perfect day to learn how to solve a Rubik's Cube!", "There's nothing wrong with taking a short nap this afternoon.", "Have you ever considered starting a blog? Today could be the day.", "Pick up a book and get a good read in tonight.", "Why not bake something today?"]
+
+		let rng = Math.floor(Math.random() * 6) + 1
+
+		setActivity(activities[rng - 1]);
+	}
+
+	function musicGenerator() {
+		let songs = ["Save Your Tears by The Weeknd", "Before You Go by Lewis Capaldi", "Bad Liar by Imagine Dragons", "Happpy by Pharrell Williams", "Never Gonna Give You Up by Rick Astley", "God's Plan by Drake"]
+
+		let rng = Math.floor(Math.random() * 6) + 1
+
+		setMusic(songs[rng - 1]);
 	}
 
 	useEffect(() => {
 	 
 		fetchData();
-	  }, []);
+		activityGenerator();
+		musicGenerator();
+	}, []);
+
 
 
 
@@ -128,11 +149,31 @@ const Dashboard =() =>{
 					</div>
 
 					<div class="five">
-						Five
+						<Card>
+							<Card.Body>
+								<blockquote id="activity" className="blockquote mb-0">
+								<p>
+									{' '}
+									{activityRec}
+									{' '}
+								</p>
+								</blockquote>
+							</Card.Body>
+						</Card>
 					</div>
 
 					<div class="six">
-						Six
+						<Card>
+							<Card.Body>
+								<blockquote id="activity" className="blockquote mb-0">
+								<p>
+									{' '}
+									{songRec}
+									{' '}
+								</p>
+								</blockquote>
+							</Card.Body>
+						</Card>
 					</div>
 				</div>
 
