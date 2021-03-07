@@ -6,9 +6,9 @@
   "scripts": {
     "server": "node server/server.js",
 	"start": "npm run server",
-	"heroku-postbuild": "react-scripts client/build",
-    "test": "react-scripts client/test",
-    "eject": "react-scripts client/eject"
+	"heroku-postbuild": "cd client && npm run build",
+    "test": "cd client && react-scripts test",
+    "eject": "cd client && react-scripts eject"
   },
   "repository": {
     "type": "git",
@@ -24,6 +24,8 @@
     "@react-latest-ui/react-sticky-notes": "^0.2.6",
     "concurrently": "^5.3.0",
     "react-digital-clock": "^0.1.2",
-    "react-stickies": "0.0.16"
+    "react-stickies": "0.0.16",
+	"react-scripts": "^3.4.4"
+
   }
 }
