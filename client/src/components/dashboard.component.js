@@ -19,12 +19,23 @@ const Dashboard =() =>{
 	const [startDate, setStartDate] = useState(new Date());
 
 	function activityGenerator() {
-		let activities = ["Can you fit a 30 minute walk into your schedule?", "Today is the perfect day to learn how to solve a Rubik's Cube!", ""]
+		let activities = ["Can you fit a 30 minute walk into your schedule?", "Today is the perfect day to learn how to solve a Rubik's Cube!", "There's nothing wrong with taking a short nap this afternoon.", "Have you ever considered starting a blog? Today could be the day.", "Pick up a book and get a good read in tonight.", "Why not bake something today?"]
 
 		let rng = Math.floor(Math.random() * 6) + 1
 
-
+		return activities[rng - 1]
 	}
+
+	function musicGenerator() {
+		let songs = ["Save Your Tears by The Weeknd", "Before You Go by Lewis Capaldi", "Bad Liar by Imagine Dragons", "Happpy by Pharrell Williams", "Never Gonna Give You Up by Rick Astley", "God's Plan by Drake"]
+
+		let rng = Math.floor(Math.random() * 6) + 1
+
+		return songs[rng - 1]
+	}
+
+	let activityRec = activityGenerator()
+	let songRec = musicGenerator()
 
 	let tasks = [{
         date: "03/06/2021",
@@ -54,6 +65,7 @@ const Dashboard =() =>{
 	// 	fetchData();
 	//   }, []);
 
+	
 
 
 	return(
@@ -64,7 +76,7 @@ const Dashboard =() =>{
 					</div>
 
 					<div class="two">
-						Two
+						<input size= "47.5"/>
 					</div>
 
 					<div class="three">
@@ -129,21 +141,31 @@ const Dashboard =() =>{
 					</div>
 
 					<div class="five">
-					<Card>
-						<Card.Body>
-							<blockquote className="blockquote mb-0">
-							<p>
-								{' '}
-								Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere
-								erat a ante.{' '}
-							</p>
-							</blockquote>
-						</Card.Body>
-					</Card>
+						<Card>
+							<Card.Body>
+								<blockquote id="activity" className="blockquote mb-0">
+								<p>
+									{' '}
+									{activityRec}
+									{' '}
+								</p>
+								</blockquote>
+							</Card.Body>
+						</Card>
 					</div>
 
 					<div class="six">
-						Six
+						<Card>
+							<Card.Body>
+								<blockquote id="activity" className="blockquote mb-0">
+								<p>
+									{' '}
+									{songRec}
+									{' '}
+								</p>
+								</blockquote>
+							</Card.Body>
+						</Card>
 					</div>
 				</div>
 
