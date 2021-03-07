@@ -3,7 +3,6 @@ import "./dashboard.css";
 
 import { CalendarEvent } from 'react-bootstrap-icons';
 
-
 import { Card, ListGroup, Col, Row } from 'react-bootstrap';
 
 import DatePicker from "react-datepicker";
@@ -186,17 +185,7 @@ const Dashboard =() =>{
 
 					<div class="six">
 						<Music/>
-						{/* <Card>
-							<Card.Body>
-								<blockquote id="activity" className="blockquote mb-0">
-								<p>
-									{' '}
-									{songRec}
-									{' '}
-								</p>
-								</blockquote>
-							</Card.Body>
-						</Card> */}
+		
 					</div>
 				</div>
 
