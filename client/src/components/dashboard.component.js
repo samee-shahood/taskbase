@@ -14,6 +14,8 @@ import "react-datepicker/dist/react-datepicker.css";
 
 import axios from 'axios';
 
+import Form from "./form";
+
 const Dashboard =() =>{
 
 	const [startDate, setStartDate] = useState(new Date());
@@ -22,6 +24,8 @@ const Dashboard =() =>{
 
 	const [activityRec, setActivity] = useState();
 	const [songRec, setMusic] = useState();
+	const [state, setState] = useState('close')
+
 
 	const fetchData = async () => {
 		const result = await axios.get(
@@ -116,7 +120,9 @@ const Dashboard =() =>{
 										</Row>									
 									</label>
 								</Col>
-								<Col></Col>
+								<Col>				
+								<Form/>
+							</Col>
 								</Row>
 							</div>
 					
@@ -182,6 +188,7 @@ const Dashboard =() =>{
 						</Card>
 					</div>
 				</div>
+
 
 			</div>
 	)
