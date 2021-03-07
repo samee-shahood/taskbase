@@ -5,10 +5,8 @@
   "main": "index.js",
   "scripts": {
     "server": "node server/server.js",
-	"start": "npm run server",
-	"heroku-postbuild": "cd client && npm run build",
-    "test": "cd client && react-scripts test",
-    "eject": "cd client && react-scripts eject"
+	"start": "npm install &&npm run server",
+	"heroku-postbuild": "cd client && npm run build"
   },
   "repository": {
     "type": "git",
