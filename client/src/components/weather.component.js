@@ -35,10 +35,8 @@ export default class Weather extends Component {
 	}
 
 	render(){
-		return(
-			<div style={{ 
-				backgroundImage: `url("https://fasken.azureedge.net/-/media/29b8b6a371344d40a392350b395691d6.ashx?mw=2560&modified=20200624134121&hash=69328985F09305B8D5FFD44766B77D53")` 
-			  }}>
+		return( 
+				
 				  
 				<ListGroup variant="flush">
 								<ListGroup.Item>
@@ -72,7 +70,6 @@ export default class Weather extends Component {
 								</ListGroup.Item>
 		
 						</ListGroup>
-			</div>
 		);
 	};
 
