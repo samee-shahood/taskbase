@@ -4,13 +4,11 @@
   "description": "An application that allows programmers to collaborate and vibe",
   "main": "index.js",
   "scripts": {
-	"heroku-postbuild": "npm run start",
-    "install-client": "cd client && npm install",
-    "install-server": "cd server && npm install",
-    "build-client": "cd client && npm run build",
-    "start-server": "cd server && npm run start",
-    "install": "npm run install-client && npm run install-server",
-    "start": "concurrently \"npm run build-client\" \"npm run start-server\""
+    "server": "node server/server.js",
+	"start": "npm run server",
+	"heroku-postbuild": "react-scripts client/build",
+    "test": "react-scripts client/test",
+    "eject": "react-scripts client/eject"
   },
   "repository": {
     "type": "git",
