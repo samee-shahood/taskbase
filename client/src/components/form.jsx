@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import { Button } from 'react-bootstrap';
 import * as typeformEmbed from "@typeform/embed";
 import axios from 'axios';
 
@@ -47,7 +48,7 @@ const Form = () => {
 
 	return(
 		<div>
-			<button id="bt-popup" onClick={open}>+Event</button>
+			<Button id="bt-popup" onClick={open} variant="primary">Create a Task +</Button>
 		</div>
 	)
 
