@@ -120,9 +120,10 @@ const Dashboard =() =>{
 										</Row>									
 									</label>
 								</Col>
-								<Col>				
-								<Form/>
-							</Col>
+								<Row>
+									<Col><Form/></Col>				
+								
+							</Row>
 								</Row>
 							</div>
 					
