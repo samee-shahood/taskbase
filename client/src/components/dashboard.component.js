@@ -1,4 +1,4 @@
-import React, { Component, useState } from 'react';
+import React, { Component, useState, useEffect } from 'react';
 import "./dashboard.css";
 
 import { CalendarEvent } from 'react-bootstrap-icons';
@@ -12,60 +12,47 @@ import Weather from './weather.component';
 
 import "react-datepicker/dist/react-datepicker.css";
 
-import Axios from 'axios';
+import axios from 'axios';
 
 const Dashboard =() =>{
 
 	const [startDate, setStartDate] = useState(new Date());
 
-	function activityGenerator() {
-		let activities = ["Can you fit a 30 minute walk into your schedule?", "Today is the perfect day to learn how to solve a Rubik's Cube!", "There's nothing wrong with taking a short nap this afternoon.", "Have you ever considered starting a blog? Today could be the day.", "Pick up a book and get a good read in tonight.", "Why not bake something today?"]
+	const[tasks, setTasks] = useState([]);
 
-		let rng = Math.floor(Math.random() * 6) + 1
+	const fetchData = async () => {
+		const result = await axios.get(
+			'http://localhost:5000/api/tasks?date=' + startDate.toISOString(),
+			{headers: {
+				Authorization: "Bearer " + localStorage.getItem("token")
+			}}
+		);
+		console.log(startDate);
+		setTasks(result.data.tasks);
+	};
 
-		return activities[rng - 1]
+	const fetchData2 = async (date) => {
+		const result = await axios.get(
+			'http://localhost:5000/api/tasks?date=' + date.toISOString(),
+			{headers: {
+				Authorization: "Bearer " + localStorage.getItem("token")
+			}}
+		);
+		console.log(startDate);
+		setTasks(result.data.tasks);
+	};
+
+	const changeDate = async (date) => {
+		console.log(date);
+		setStartDate(date);
+		fetchData2(date);
 	}
 
-	function musicGenerator() {
-		let songs = ["Save Your Tears by The Weeknd", "Before You Go by Lewis Capaldi", "Bad Liar by Imagine Dragons", "Happpy by Pharrell Williams", "Never Gonna Give You Up by Rick Astley", "God's Plan by Drake"]
-
-		let rng = Math.floor(Math.random() * 6) + 1
-
-		return songs[rng - 1]
-	}
-
-	let activityRec = activityGenerator()
-	let songRec = musicGenerator()
-
-	let tasks = [{
-        date: "03/06/2021",
-        title: "Integrate API",
-        description: "i need to unhard code this"
-    },
-
-    {
-        date: "03/07/2021",
-        title: "Submit",
-        description: "need to submit this!"
-    }];
-
-	//const[tasks, setTasks] = useState({tasks});
-
-
-	// useEffect(() => {
-	// 	const fetchData = async () => {
-	// 	  const result = await axios(
-	// 		'https://hn.algolia.com/api/v1/search?query=redux',
-	// 	  );
-
-
-	// 	  setData(result.data);
-	// 	};
+	useEffect(() => {
 	 
-	// 	fetchData();
-	//   }, []);
+		fetchData();
+	  }, []);
 
-	
 
 
 	return(
@@ -76,7 +63,7 @@ const Dashboard =() =>{
 					</div>
 
 					<div class="two">
-						<input size= "47.5"/>
+						Two
 					</div>
 
 					<div class="three">
@@ -94,7 +81,7 @@ const Dashboard =() =>{
 									<label >
 										<Row>
 											<Col md={5}>
-											<DatePicker class="react-datepicker" selected={startDate} onChange={date => setStartDate(date)} />
+											<DatePicker class="react-datepicker" selected={startDate} onChange={date => changeDate(date)} />
 											</Col>
 											<Col xs={3}></Col>
 											<Col>
@@ -121,7 +108,7 @@ const Dashboard =() =>{
 												</Col>
 												<Col xs={3}></Col>
 												<Col>
-													<Card.Title>{item.date}</Card.Title>
+													<Card.Title>{new Date(item.date).toLocaleDateString()}</Card.Title>
 												</Col>
 											</Row>
 		
@@ -141,31 +128,11 @@ const Dashboard =() =>{
 					</div>
 
 					<div class="five">
-						<Card>
-							<Card.Body>
-								<blockquote id="activity" className="blockquote mb-0">
-								<p>
-									{' '}
-									{activityRec}
-									{' '}
-								</p>
-								</blockquote>
-							</Card.Body>
-						</Card>
+						Five
 					</div>
 
 					<div class="six">
-						<Card>
-							<Card.Body>
-								<blockquote id="activity" className="blockquote mb-0">
-								<p>
-									{' '}
-									{songRec}
-									{' '}
-								</p>
-								</blockquote>
-							</Card.Body>
-						</Card>
+						Six
 					</div>
 				</div>
 
