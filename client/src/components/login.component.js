@@ -34,7 +34,7 @@ export default class Login extends Component{
         event.preventDefault();
         axios({
             method: 'post',
-            url: '/api/users/login', //dummy user
+            url: 'http://localhost:5000/api/users/login', //dummy user
             data: {
                 email: this.state.email,
                 password: this.state.password,
