@@ -85,7 +85,7 @@ select{
 	/* background-color: rgb(236, 236, 236); */
   }
 
-.one, .two, .three, .four, .five, .six{
+.one, .two, .three, .five, .six{
 	background-color: rgb(255, 255, 255);
 	margin-left: 20px;
 	margin-right:20px;
@@ -109,7 +109,22 @@ select{
 	grid-row: 2 / 8;
 }
 
+.react-datepicker__input-container {
+	font-size:15px;
+	/* width: 40px; */
+}
 
+.center {
+	justify-content: center;
+	display: flex;
+	/* width: 50%; */
+	margin:  auto;
+}
+
+/* .react-datepicker-wrapper {
+    width: 100%;
+} */
+  
 .three {
 	grid-column: 1 / 5;
 	grid-row: 2 / 8;

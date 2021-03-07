@@ -15,6 +15,13 @@ const UserSchema = new mongoose.Schema({
 		type: String,
 		default: ""
 	},
+	tasks: [
+		{
+			title: {type: String, required: true},
+			description: {type: String, required: true},
+			date: {type: Date, required:true},
+		}
+	],
 	date: {
 		type: Date,
 		default: Date.now
