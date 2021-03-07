@@ -3,7 +3,6 @@ import "./dashboard.css";
 
 import { CalendarEvent } from 'react-bootstrap-icons';
 
-
 import { Card, ListGroup, Col, Row } from 'react-bootstrap';
 
 import DatePicker from "react-datepicker";
@@ -22,6 +21,9 @@ const Dashboard =() =>{
 
 	const [activityRec, setActivity] = useState();
 	const [songRec, setMusic] = useState();
+	const [songName, setsongName] = useState();
+	const [link, setLink] = useState();
+	const [profileimage, setImage] = useState();
 
 	const fetchData = async () => {
 		const result = await axios.get(
@@ -59,11 +61,59 @@ const Dashboard =() =>{
 	}
 
 	function musicGenerator() {
-		let songs = ["Save Your Tears by The Weeknd", "Before You Go by Lewis Capaldi", "Bad Liar by Imagine Dragons", "Happpy by Pharrell Williams", "Never Gonna Give You Up by Rick Astley", "God's Plan by Drake"]
+
+		const weekend = {
+            name: "The Weekend",
+            song_name: "Save Your Tears",
+            link: "https://www.youtube.com/watch?v=XXYlFuWEuKI&ab_channel=TheWeekndVEVO",
+            picture: "https://www.rap-up.com/app/uploads/2020/02/the-weeknd-after-hours.jpg", 
+        }
+
+		const Lewis = {
+			name: "Lewis Capaldi",
+            song_name: "Before You Go",
+            link: "https://www.youtube.com/watch?v=Jtauh8GcxBY",
+            picture: "https://www.google.com/url?sa=i&url=https%3A%2F%2Fwww.theguardian.com%2Fmusic%2F2019%2Foct%2F10%2Flewis-capaldi-theyre-screaming-americas-sweetheart-at-me-its-wild&psig=AOvVaw1WTQCsA_HyHjr1Il6FT_rL&ust=1615178634141000&source=images&cd=vfe&ved=0CAIQjRxqFwoTCPizyrmvne8CFQAAAAAdAAAAABAD", 
+        }
+
+		const Imagine_Dragons = {
+			name: "Imagine Dragons",
+            song_name: "Bad Liar",
+            link: "https://www.youtube.com/watch?v=I-QfPUz1es8",
+            picture: "https://upload.wikimedia.org/wikipedia/en/6/66/Imagine_Dragons_Bad_Liar.jpg"
+        }
+
+		const Pharrell = {
+			name: "Pharrell Williams",
+            song_name: "Happy",
+            link: "https://www.youtube.com/watch?v=ZbZSe6N_BXs",
+            picture: "https://upload.wikimedia.org/wikipedia/en/2/23/Pharrell_Williams_-_Happy.jpg", 
+        }
+
+		const Rick = {
+			name: "Rick Astley",
+            song_name: "Never Gonna Give You Up",
+            link: "https://www.youtube.com/watch?v=DLzxrzFCyOs",
+            picture: "https://images.genius.com/a473b0f49d967687c66db5f4140b54d1.999x999x1.jpg", 
+        }
+
+		const Drake = {
+			name: "Drake",
+            song_name: "God's Plan",
+            link: "https://www.youtube.com/watch?v=xpVfcZ0ZcFM",
+            picture: "https://s.mxmcdn.net/images-storage/albums4/4/9/5/1/0/4/39401594_350_350.jpg", 
+        }
+
+		let songs = [weekend, Lewis, Imagine_Dragons, Pharrell, Rick, Drake]
 
 		let rng = Math.floor(Math.random() * 6) + 1
 
-		setMusic(songs[rng - 1]);
+		//setMusic(songs[rng - 1]).name;
+
+		setMusic(songs[rng - 1].name);
+		setsongName(songs[rng - 1].song_name);
+		setLink(songs[rng - 1].link);
+		setImage(songs[rng - 1].picture);
 	}
 
 	useEffect(() => {
@@ -165,12 +215,36 @@ const Dashboard =() =>{
 					<div class="six">
 						<Card>
 							<Card.Body>
+							<Card.Title>Music to listen to:</Card.Title>
+							<Card.Img variant="top" src = {profileimage}/>
 								<blockquote id="activity" className="blockquote mb-0">
+								{/* <p>
+									{' '}
+									{
+										"Music to listen to:\n"+ songRec + "\n" + songName
+									}
+									{' '}
+								</p> */}
+								<Card.Body>
+							<Card.Title>
 								<p>
 									{' '}
-									{songRec}
+									{
+										songName
+									}
 									{' '}
 								</p>
+							</Card.Title>
+							<Card.Text>
+								<p>
+									{' '}
+									{
+										"by: " + songRec
+									}
+									{' '}
+								</p>
+							</Card.Text>
+						</Card.Body>
 								</blockquote>
 							</Card.Body>
 						</Card>
