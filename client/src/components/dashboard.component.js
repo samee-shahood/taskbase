@@ -10,11 +10,17 @@ import DatePicker from "react-datepicker";
 
 import Weather from './weather.component';
 
+import Music from './music.component';
+
 import "react-datepicker/dist/react-datepicker.css";
+
+import Clock from 'react-digital-clock';
+
 
 import axios from 'axios';
 
 import Form from "./form";
+import NavBar from "./navbar.component"
 
 const Dashboard =() =>{
 
@@ -23,13 +29,13 @@ const Dashboard =() =>{
 	const[tasks, setTasks] = useState([]);
 
 	const [activityRec, setActivity] = useState();
-	const [songRec, setMusic] = useState();
+	// const [songRec, setMusic] = useState();
 	const [state, setState] = useState('close')
 
 
 	const fetchData = async () => {
 		const result = await axios.get(
-			'http://localhost:5000/api/tasks?date=' + startDate.toISOString(),
+			'/api/tasks?date=' + startDate.toISOString(),
 			{headers: {
 				Authorization: "Bearer " + localStorage.getItem("token")
 			}}
@@ -40,7 +46,7 @@ const Dashboard =() =>{
 
 	const fetchData2 = async (date) => {
 		const result = await axios.get(
-			'http://localhost:5000/api/tasks?date=' + date.toISOString(),
+			'/api/tasks?date=' + date.toISOString(),
 			{headers: {
 				Authorization: "Bearer " + localStorage.getItem("token")
 			}}
@@ -61,20 +67,11 @@ const Dashboard =() =>{
 
 		setActivity(activities[rng - 1]);
 	}
-
-	function musicGenerator() {
-		let songs = ["Save Your Tears by The Weeknd", "Before You Go by Lewis Capaldi", "Bad Liar by Imagine Dragons", "Happpy by Pharrell Williams", "Never Gonna Give You Up by Rick Astley", "God's Plan by Drake"]
-
-		let rng = Math.floor(Math.random() * 6) + 1
-
-		setMusic(songs[rng - 1]);
-	}
-
 	useEffect(() => {
 	 
 		fetchData();
 		activityGenerator();
-		musicGenerator();
+		// musicGenerator();
 	}, []);
 
 
@@ -82,9 +79,24 @@ const Dashboard =() =>{
 
 	return(
 			<div>
+					<NavBar/>
+
+				<br/>
 				<div class="wrapper">
+					
+					{/* <div class="seven"> */}
+						<form action="https://google.com/search" method="get">
+							<input type="hidden" name="sitesearch" value="http://acme.com" />
+							<input class="seven" type="text" name="q" placeholder="Google Search" />
+						</form>
+
+					{/* </div> */}
+				
+
 					<div class="one">
-						One
+						<div className = "clock">
+							<Clock />
+						</div>
 					</div>
 
 					<div class="two">
@@ -93,7 +105,7 @@ const Dashboard =() =>{
                                 Your Notepad
                             </div>
                         </Card.Header>
-                        <textarea name="notepad" cols="43" rows="27" placeholder="Use this space for whatever you need..."></textarea>
+                        <textarea className="textbox" placeholder="Use this space for whatever you need..."></textarea>
                     </div>
 
 					<div class="three">
@@ -106,8 +118,8 @@ const Dashboard =() =>{
 
 							<div className="center">
 								<Row>
-								<Col></Col>
-								<Col xs={10}>
+								{/* <Col></Col> */}
+								<Col xs={8}>
 									<label >
 										<Row>
 											<Col md={5}>
@@ -156,27 +168,25 @@ const Dashboard =() =>{
 
 					</div>
 
-					<div class="four" style={{ 
-				backgroundImage: `url("https://fasken.azureedge.net/-/media/29b8b6a371344d40a392350b395691d6.ashx?mw=2560&modified=20200624134121&hash=69328985F09305B8D5FFD44766B77D53")`}}>
+					<div class="four">
 						<Weather/>
 					</div>
 
 					<div class="five">
-						<Card>
 							<Card.Body>
-								<blockquote id="activity" className="blockquote mb-0">
-								<p>
+								{/* <blockquote id="activity" className="blockquote mb-0"> */}
+								{/* <p> */}
 									{' '}
 									{activityRec}
 									{' '}
-								</p>
-								</blockquote>
+								{/* </p>
+								</blockquote> */}
 							</Card.Body>
-						</Card>
 					</div>
 
 					<div class="six">
-						<Card>
+						<Music/>
+						{/* <Card>
 							<Card.Body>
 								<blockquote id="activity" className="blockquote mb-0">
 								<p>
@@ -186,7 +196,7 @@ const Dashboard =() =>{
 								</p>
 								</blockquote>
 							</Card.Body>
-						</Card>
+						</Card> */}
 					</div>
 				</div>
 

@@ -96,6 +96,11 @@ passport.use(new JWTStrategy({
 
 app.use(express.static(path.join(__dirname, "../client", "build")));
 
+app.get("/*", (req, res) => {
+	res.sendFile(path.join(__dirname, "../build/index.html"));
+});
+
+
 app.get('/weather', (req, res) => {
     if(!req.query.address) {
         return res.send({

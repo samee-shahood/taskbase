@@ -2,6 +2,8 @@ import React, { useState, useEffect } from "react";
 import { Button } from 'react-bootstrap';
 import * as typeformEmbed from "@typeform/embed";
 import axios from 'axios';
+import "./dashboard.css";
+
 
 const Form = () => {
 	const submitForm = (response_id) => {
@@ -14,7 +16,7 @@ const Form = () => {
 		};
 
 		console.log(localStorage.getItem("token"));
-		axios.get(`http://localhost:5000/api/form/${response_id}`, {headers: {
+		axios.get(`/api/form/${response_id}`, {headers: {
 			Authorization: "Bearer " + localStorage.getItem("token")}
 		}
 		)

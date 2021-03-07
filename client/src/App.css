@@ -5,6 +5,8 @@
   /* text-align: center; */
   font-family: 'Karla', sans-serif;
   background-color: rgb(242, 244, 248);
+  background-image: url('https://wallpaper.dog/large/17205045.jpg');
+  background-color:rgba(0, 0, 0, 0.5);
 }
 
 .App-link {

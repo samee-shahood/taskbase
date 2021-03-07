@@ -35,41 +35,35 @@ export default class Weather extends Component {
 	}
 
 	render(){
-		return( 
-				
+		return(
+			<div>
 				  
-				<ListGroup variant="flush">
-								<ListGroup.Item>
 									
-									{/* <Card style={{ width: '18rem' }}> */}
-									<Card.Img id="city" src="https://fasken.azureedge.net/-/media/29b8b6a371344d40a392350b395691d6.ashx?mw=2560&modified=20200624134121&hash=69328985F09305B8D5FFD44766B77D53" alt="Card image" />
-									<Card.ImgOverlay>
-										<Card.Body>
-											<Row>
-												<Col md={7}>													
-													<Card.Title>{this.state.location}</Card.Title>
-													<Row>
-														<Col md={3}>
-															<img src={this.state.icon} />
-														</Col>
+				{/* <Card style={{ width: '18rem' }}> */}
+					<Card.Body>
+						<Row className="justify-content-md-center">
+							<Col md={7}>													
+								<Card.Title>{this.state.location}</Card.Title>
+								<Row>
+									<Col md={3}>
+										<img src={this.state.icon} />
+									</Col>
 
-														<Col md={9}>
-															<Card.Text id="WeatherDesc">
-																{this.state.forecast}
-															</Card.Text>
-														</Col>
-													</Row>
-												</Col>
-												<Col xs={2}></Col>
-												<Col>
-													<Card.Title id="temp">{this.state.temperature} °C</Card.Title>
-												</Col>
-											</Row>
-										</Card.Body>
-									</Card.ImgOverlay>
-								</ListGroup.Item>
+									<Col>
+										<Card.Text id="WeatherDesc">
+											{this.state.forecast}
+										</Card.Text>
+									</Col>
+								</Row>
+							</Col>
+							<Col xs={1}></Col>
+							<Col>
+								<Card.Title id="temp">{this.state.temperature} °C</Card.Title>
+							</Col>
+						</Row>
+					</Card.Body>
 		
-						</ListGroup>
+			</div>
 		);
 	};
 

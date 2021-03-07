@@ -1,9 +1,10 @@
 {
-  "name": "vibescript",
+  "name": "taskbase",
   "version": "1.0.0",
   "description": "An application that allows programmers to collaborate and vibe",
   "main": "index.js",
   "scripts": {
+	"heroku-postbuild": "NPM_CONFIG_PRODUCTION=false npm install npm && run build",
     "install-client": "cd client && npm install",
     "install-server": "cd server && npm install",
     "build-client": "cd client && npm run build",
@@ -13,17 +14,18 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/hellomusa/vibescript.git"
+    "url": "git+https://github.com/samee-shahood/taskbase.git"
   },
   "author": "",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/hellomusa/vibescript/issues"
+    "url": "https://github.com/samee-shahood/taskbase"
   },
-  "homepage": "https://github.com/hellomusa/vibescript#readme",
+  "homepage": "https://github.com/samee-shahood/taskbase",
   "dependencies": {
     "@react-latest-ui/react-sticky-notes": "^0.2.6",
     "concurrently": "^5.3.0",
+    "react-digital-clock": "^0.1.2",
     "react-stickies": "0.0.16"
   }
 }

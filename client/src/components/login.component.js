@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import {Link} from 'react-router-dom';
 import axios from 'axios';
+import "./dashboard.css";
 
     
 export default class Login extends Component{
@@ -33,7 +34,7 @@ export default class Login extends Component{
         event.preventDefault();
         axios({
             method: 'post',
-            url: 'http://localhost:5000/api/users/login', //dummy user
+            url: '/api/users/login', //dummy user
             data: {
                 email: this.state.email,
                 password: this.state.password,
@@ -59,7 +60,10 @@ export default class Login extends Component{
 
     render() {
         return (
-        <div class="userinputform">
+        <div className="userinputform">
+					<br/>
+		<br/>
+		<br/>
         <h2 className="text">Sign In</h2>
         <form onSubmit={this.onSubmit}>
             <div className="formgroup">
@@ -77,12 +81,25 @@ export default class Login extends Component{
         
         <div>
     
-            <small style={{float: "right"}} className="text">
+            <small className="text">
                 Don't have an account? <Link to="/register" className="text">Sign Up</Link>
             </small>
         </div>
 
+
+		<br/>
+		<br/>
+		<br/>
+		<br/>
+		<br/>
+		<br/>
+		<br/>
+		<br/>
+		<br/>
+
         </div>
+
+	
         )
     }
 }
