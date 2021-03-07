@@ -84,7 +84,7 @@ const Dashboard =() =>{
 					</div>
 
 					<div class="two">
-						Two
+						<input size= "47.5"/>
 					</div>
 
 					<div class="three">

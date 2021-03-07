@@ -55,7 +55,7 @@ export default class Weather extends Component {
 															<img src={this.state.icon} />
 														</Col>
 
-														<Col md={7}>
+														<Col md={9}>
 															<Card.Text id="WeatherDesc">
 																{this.state.forecast}
 															</Card.Text>
