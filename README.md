@@ -1,10 +1,11 @@
 # TO RUN LOCALLY
 Make sure npm install from root, then follow these steps: 
+```
 cd client && npm start
 cd ..
 cd server && npm start
-
-Navigate to localhost:3000 to use our app!
+```
+Then navigate to localhost:3000 to use our app!
 
 ## Inspiration
 As students and workers, we feel the impact of lackluster productivity apps far too often. That's why we decided to build a web app that acts as an **all-in-one** life-helping dashboard.
