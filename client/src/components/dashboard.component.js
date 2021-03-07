@@ -18,20 +18,41 @@ const Dashboard =() =>{
 
 	const [startDate, setStartDate] = useState(new Date());
 
-	const[tasks, setTasks] = useState({tasks});
+	function activityGenerator() {
+		let activities = ["Can you fit a 30 minute walk into your schedule?", "Today is the perfect day to learn how to solve a Rubik's Cube!", ""]
+
+		let rng = Math.floor(Math.random() * 6) + 1
 
 
-	useEffect(() => {
-		const fetchData = async () => {
-		  const result = await axios(
-			'https://hn.algolia.com/api/v1/search?query=redux',
-		  );
+	}
+
+	let tasks = [{
+        date: "03/06/2021",
+        title: "Integrate API",
+        description: "i need to unhard code this"
+    },
+
+    {
+        date: "03/07/2021",
+        title: "Submit",
+        description: "need to submit this!"
+    }];
+
+	//const[tasks, setTasks] = useState({tasks});
+
+
+	// useEffect(() => {
+	// 	const fetchData = async () => {
+	// 	  const result = await axios(
+	// 		'https://hn.algolia.com/api/v1/search?query=redux',
+	// 	  );
+
+
+	// 	  setData(result.data);
+	// 	};
 	 
-		  setData(result.data);
-		};
-	 
-		fetchData();
-	  }, []);
+	// 	fetchData();
+	//   }, []);
 
 
 
@@ -108,7 +129,17 @@ const Dashboard =() =>{
 					</div>
 
 					<div class="five">
-						Five
+					<Card>
+						<Card.Body>
+							<blockquote className="blockquote mb-0">
+							<p>
+								{' '}
+								Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere
+								erat a ante.{' '}
+							</p>
+							</blockquote>
+						</Card.Body>
+					</Card>
 					</div>
 
 					<div class="six">
